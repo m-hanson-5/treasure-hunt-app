@@ -166,7 +166,8 @@ export const THMap = ({
             esriConfig.apiKey = "AAPKc281cec04c56424bb82093c8925ea337x_K4mBEA-vKPfea5-iSQuzoKoHc5eupD1JQwl-4R_a3AoGuNVdUfNdzbDEQn2jZ2"
             const view = new MapView(
                 {
-                    map: new Map({ basemap: "arcgis-community"}), 
+                    map: new Map({ basemap: "hybrid"}),
+                    //map: new Map({ basemap: "arcgis-community"}),
                     container: "map",
                     center: _initCenter.current, 
                     zoom: _homeZoom.current,
