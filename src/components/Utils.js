@@ -76,7 +76,15 @@ export const parseConfig = async () =>
 
 const lookUpConfig = async(edition) => 
 {
+  // *************Original******************
   const featureLayerRegistryURL = "https://services.arcgis.com/nzS0F0zdNLvs7nc8/arcgis/rest/services/survey123_aedff645769549a5bea20220e2da313f_results/FeatureServer/0"
+  // ****************************************
+  // Rosemount url feature layer (not results):
+  // const featureLayerRegistryURL = "https://services2.arcgis.com/g9tzqCz1E9uQq6Yy/arcgis/rest/services/survey123_9245839d24ee4420bf52c183bb4241a2/FeatureServer/0"
+
+  // Rosemount url feature layer (results):
+  // const featureLayerRegistryURL = "https://services2.arcgis.com/g9tzqCz1E9uQq6Yy/arcgis/rest/services/survey123_9245839d24ee4420bf52c183bb4241a2_results/FeatureServer/0"
+
   const response = await fetch(
     featureLayerRegistryURL+"/query?where=edition='"+edition+"'&outFields=*&returnGeometry=true&f=pjson"
   );
@@ -101,14 +109,14 @@ const lookUpConfig = async(edition) =>
   return config;
 }
 
-export const fetchFeatures = async (serviceURL) => 
+export const fetchFeatures = async (serviceURL) =>
 {
   const response = await fetch(
     serviceURL+"/query?where=1+%3D+1&outFields=*&returnGeometry=true&f=pjson"
   );
   const json = await response.json();
   return json.features;
-}      
+}
 
 export const getImageURLs = async(serviceURL, objectIds) =>
 {
@@ -132,19 +140,19 @@ export const getItemInfo = async(itemID) =>
     const SHARING_URL = "https://www.arcgis.com/sharing/";
     const response = await fetch(SHARING_URL+"rest/search?q="+itemID+"&f=json");
     const json = await response.json();
-    
+
     const surveyFormItem = json.results.filter(
       (value)=>value.type==="Form" && value.access==="public"
     ).shift();
 
     const featureServiceItem = json.results.filter(
-      (value)=>value.type==="Feature Service" && 
-              value.access==="public" && 
+      (value)=>value.type==="Feature Service" &&
+              value.access==="public" &&
               (value.name.includes("stakeholder") || value.name.includes("results"))
     ).shift();
 
     return {
-            title: (surveyFormItem && surveyFormItem.title) || "Your title here", 
+            title: (surveyFormItem && surveyFormItem.title) || "Your title here",
             description: (surveyFormItem && surveyFormItem.description) || "You're subtitle here too (once you add your Treasure Hunt to the registry).",
             serviceURL: featureServiceItem.url+"/0"
           };
@@ -153,21 +161,21 @@ export const getItemInfo = async(itemID) =>
 
 export const parseArgs = () =>
 {
-    
+
     var parts = decodeURIComponent(document.location.href).split("?");
     var args = {};
-    
+
     if (parts.length === 2) {
         args = parts[1].split("&").reduce(
             function(accumulator, value) {
                 var temp = value.split("=");
                 if (temp.length === 2) {accumulator[temp[0].toLowerCase()] = temp[1];}
-                return accumulator; 
-            }, 
+                return accumulator;
+            },
             args
         );
     }
 
     return args;
 
-}	  
+}
