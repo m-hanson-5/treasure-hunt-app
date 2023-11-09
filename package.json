@@ -1,7 +1,7 @@
 {
   "name": "th-v3",
   "version": "0.1.0",
-  "homepage": "https://m-hanson-5.github.io/treasure-hunt-app/",
+  "homepage": ".",
   "private": true,
   "dependencies": {
     "@arcgis/core": "^4.24.7",
