@@ -3,7 +3,7 @@
     "description": "Test Your Navigational Wit: Unravel Rosemount's Geographic Riddles on This GIS Day Adventure!",
     "serviceURL": "https://services2.arcgis.com/g9tzqCz1E9uQq6Yy/arcgis/rest/services/survey123_9245839d24ee4420bf52c183bb4241a2_results/FeatureServer/0",
     "path": "rosemountgisdays",
-    "introImage": "./Cover_map1.jpg",
+    "introImage": "./Cover_map.jpg",
     "initCenter": [-93.1258, 44.7394],
     "homeZoom": 14,
     "minZoom": 13,
