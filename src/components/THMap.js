@@ -161,8 +161,7 @@ export const THMap = ({
 
     useEffect(
         () => {
-            //esriConfig.apiKey = "AAPK75857d04bed34bb0ab0ded6ec87ac17dkzPicaT6Oa4wxsoFybHZL4X03aHE_lS3ipXVw-BKYPPoAIM18PUUUloLvR-YlVNB"
-            // mine above, esri below
+
             esriConfig.apiKey = "AAPKc281cec04c56424bb82093c8925ea337x_K4mBEA-vKPfea5-iSQuzoKoHc5eupD1JQwl-4R_a3AoGuNVdUfNdzbDEQn2jZ2"
             const view = new MapView(
                 {
